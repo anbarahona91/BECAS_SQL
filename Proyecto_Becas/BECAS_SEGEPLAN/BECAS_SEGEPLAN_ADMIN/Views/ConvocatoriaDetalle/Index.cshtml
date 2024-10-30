@@ -1,0 +1,501 @@
+﻿@using DevExtreme.AspNet.Mvc
+
+
+
+<div class="text-center w-full text-azulBecas m-8 font-bold text-2xl">
+    @ViewBag.TituloConvocatoria
+</div>
+
+<div class="w-full  rounded grid grid-cols-2 gap-8 text-azulBecas">
+
+    <div class="shadow-lg p-8">
+        <div class="">
+            <div class=" mx-auto  font-bold border-b border-azulBecas text-xl  "> 
+            País donde se desarrollará el programa académico
+            </div>  
+        </div>
+        <div class="px-4">
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaPai>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaPaisApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaPais")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.Idpais)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("PaisApi").LoadAction("Get").Key("idpais"))
+                        .ValueExpr("idpais")
+				        .DisplayExpr("nombre")
+                    ).DataField("idpais").Caption("País");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Público objetivo
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaPublico>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaPublicoApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconocatoriaPublico")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.Idpublico)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("PublicoApi").LoadAction("Get").Key("idpublico"))
+                        .ValueExpr("idpublico")
+				        .DisplayExpr("nombre")
+                    ).DataField("idpublico").Caption("Tipo público");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Nivel académico del programa
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaNivelAcademico>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaNivelAcademicoApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaNivelAcademico")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.IdnivelAcademico)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("NivelAcademicoApi").LoadAction("Get").Key("idnivelAcademico"))
+                        .ValueExpr("idnivelAcademico")
+				        .DisplayExpr("nombre")
+                    ).DataField("idnivelAcademico").Caption("Nivel académico");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Nivel académico requerido para aplicar al programa
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaNivelAcademicoRequerido>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaNivelAcademicoRequeridoApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaNivelAcademicoRequerido")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.IdnivelAcademico)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("NivelAcademicoApi").LoadAction("Get").Key("idnivelAcademico"))
+                        .ValueExpr("idnivelAcademico")
+				        .DisplayExpr("nombre")
+                    ).DataField("idnivelAcademico").Caption("Nivel académico");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Idioma en el que se desarrollará el programa
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaIdioma>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaIdiomaApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaIdioma")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.IdIdiomaPrograma)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("IdiomaProgramaApi").LoadAction("Get").Key("ididiomaPrograma"))
+                        .ValueExpr("ididiomaPrograma")
+				        .DisplayExpr("nombre")
+                    ).DataField("idIdiomaPrograma").Caption("Idioma");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Idioma requerido para aplicar al  programa
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaIdiomaRequerido>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaIdiomaRequeridoApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaIdiomaRequerido")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.IdIdioma)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("IdiomaProgramaApi").LoadAction("Get").Key("ididiomaPrograma"))
+                        .ValueExpr("ididiomaPrograma")
+				        .DisplayExpr("nombre")
+                    ).DataField("idIdioma").Caption("Idioma");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Enlaces a sitios web de la convocatoria
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaEnlace>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaEnlaceApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaEnlaces")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m=>m.Nombre).DataField("nombre");
+                columns.AddFor(m=>m.Enlace).DataField("enlace");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    
+    <div class="shadow-lg p-8">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Beneficios de la convocatoria
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaBeneficio>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaBeneficioApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaBeneficio")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.Idbeneficio)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("BeneficioApi").LoadAction("Get").Key("idbeneficio"))
+                        .ValueExpr("idbeneficio")
+				        .DisplayExpr("nombre")
+                    ).DataField("idbeneficio").Caption("Beneficio");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8 col-span-2">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Oferta académica
+            </div>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaProgramaEstudio>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaProgramaEstudioApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaProgramaEstudio")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m => m.IdclasificacionEspecialidad)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("ClasificacionEspecialidadApi").LoadAction("Get").Key("idclasificacionEspecialidad"))
+                        .ValueExpr("idclasificacionEspecialidad")
+				        .DisplayExpr("nombre")
+                    ).DataField("idclasificacionEspecialidad").Caption("Especialidad");
+
+                columns.AddFor(m=>m.Nombre).DataField("nombre");
+                columns.AddFor(m=>m.FechaInicio).DataField("fechaInicio");
+                columns.AddFor(m=>m.FechaFin).DataField("fechaFin");
+                columns.AddFor(m => m.IdtipoBeca)
+                                 .Lookup(lookup => lookup
+                                    .DataSource(d => d.Mvc().Controller("TipoBecaApi").LoadAction("Get").Key("idtipoBeca"))
+                                    .ValueExpr("idtipoBeca")
+				                    .DisplayExpr("nombre")
+                                ).DataField("idtipoBeca").Caption("Tipo Beca");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+    <div class="shadow-lg p-8 col-span-2">
+        <div>
+            <div class="mx-auto  font-bold border-b border-azulBecas text-xl"> 
+            Documentos asociados
+            </div>
+        </div>
+        <div>
+            <form asp-controller="ConvocatoriaDetalle" asp-action="CargarArchivo" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id" value="@ViewBag.IdConvocatoria"  />
+                 <div class="w-1/2 mx-auto p-4">
+
+                     <div class="p-4">
+                         <label>Documento</label>
+                         <input type="file" name="file" accept="application/pdf,application/PDF" required/>
+                     </div>
+
+                     <div class="p-4">
+                         <label>Nombre de documento</label>
+                         <input type="text" name="NombreArchivo" width="250" required class="border"/>
+                     </div>
+                     <div class="p-4">
+                         @(Html.DevExtreme().Button()
+                                        .Icon("upload")
+                                        .Text("Cargar documento")
+                                        .Width("100%")
+                                        .Type(ButtonType.Default)
+                                        .UseSubmitBehavior(true)
+                                ) 
+                                <h2 id="modal-title" ></h2>
+                                <h4 id="modal-msg"></h4>
+                     </div>
+                 </div>
+                        
+             </form>
+        </div>
+        <div>
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaDocumento>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaDocumentoApi")
+                .LoadAction("Get")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaDocumento")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()) })
+            )
+            .RemoteOperations(true)
+            .Columns(columns => {
+
+                columns.AddFor(m=>m.Nombre).DataField("nombre");
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Form)
+                .AllowAdding(false)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                
+            )
+            
+            .ShowBorders(true)
+            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+        )
+        </div>
+    </div>
+</div>
+
+
+
+
+@functions {
+    string GetIdConvocatoria()
+    {
+        string result = "";
+
+        result = ViewBag.IdConvocatoria;
+
+        return result;
+    }
+}
+
+<script>
+
+  function GetIdConvocatoria() {                        
+
+
+        if ('@ViewBag.IdConvocatoria' != '') {
+            var ConvId = '@ViewBag.IdConvocatoria';                
+                return ConvId.toString();
+            } else
+            {
+                return -1;
+            }
+        }
+
+</script>

@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  },
+  "scripts": {
+    "css:build": "npx tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/styles.css  --minify",
+    "tailwind-watch": "tailwindcss build -i ./wwwroot/css/site.css -o ./wwwroot/css/styles.css --watch"
+  },
+  "dependencies": {
+    "devextreme": "^24.1.6"
+  }
+}

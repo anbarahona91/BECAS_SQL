@@ -1,0 +1,271 @@
+﻿@{
+    if (ViewData["DevExtremeLoaded"] == null)
+    {
+		@using DevExtreme.AspNet.Mvc;
+        ViewData["DevExtremeLoaded"] = true;
+    }
+}
+
+@{
+	Layout = "_LayoutPopUp";
+}
+
+<div class="container mx-auto">
+	
+    <div class="m-4 mx-auto w-3/4">
+        <div class="text-center text-red-400">@ViewBag.MensajeError</div>
+        <div class="mt-8 text-xl text-azulBecas">Postulante: @ViewBag.Nombre</div>
+        <div class="mt-8 text-xl text-azulBecas">Gastos estudio</div>
+        @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaFinabeceTipoGastoEstudio> ()
+            .ID("gridContainer")
+            .ShowBorders(true)
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaFinabeceTipoGastoEstudioApi")
+                .LoadAction("Get")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .Key("idconvocatoriaFinabeceTipoGasto")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()), IdParticipante = new JS(GetIdParticipante()) })
+            )
+            
+            .Columns(c => {
+                c.AddFor(m => m.IdtipoGastoEstuio)
+                                 .Lookup(lookup => lookup
+                                    .DataSource(d => d.Mvc().Controller("TipoGastoEstudioFinabeceApi").LoadAction("Get").Key("idtipoGastoEstudio"))
+                                    .ValueExpr("idtipoGastoEstudio")
+				                    .DisplayExpr("nombre")
+                                ).DataField("idtipoGastoEstuio").Caption("Gasto de estudios anual");
+                c.AddFor(m=>m.Gasto).DataField("gasto").Format("Q ###,###,##0.00");
+        
+            })
+            .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowAdding(false)
+                .AllowUpdating(true)
+                .AllowDeleting(false)
+                .Popup(p => p
+                        .Title("Gasto estudio")
+                        .ShowTitle(true)
+                        .Width(800)
+                        .Height(400)
+                    )
+                .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(4)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        
+                        groupItems.AddSimpleFor(m => m.Gasto).ColSpan(4).DataField("gasto");
+                        
+                        
+                    });
+                }))
+            )
+            .Summary(s => s.TotalItems(items => {
+
+                items.AddFor(m => m.Gasto)
+                    .SummaryType(SummaryType.Sum)
+                    .ValueFormat("Q ###,###,##0.00");
+                })
+            )
+    
+        )
+        
+    </div>
+	<div class="m-4 mx-auto mt-8 w-3/4">
+        
+		<div class="text-xl text-azulBecas">Estructura e ingresos Mensuales del núcleo familiar</div>
+        
+		@(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaFinabeceIngresoFamiliar>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaFinabeceIngresoFamiliarApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaFinabeceIngresoFamiliar")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()), IdParticipante = new JS(GetIdParticipante()) })
+                
+            )
+            .RemoteOperations(true)
+            .Columns(c => {
+                c.AddFor(m=>m.NombreCompleto).DataField("nombreCompleto");
+                c.AddFor(m => m.IdtipoParentesco)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("TipoParentescoFinabeceApi").LoadAction("Get").Key("idtipoParentesco"))
+                        .ValueExpr("idtipoParentesco")
+				        .DisplayExpr("nombre")
+                    ).DataField("idtipoParentesco").Caption("Parentesco");
+                c.AddFor(m=>m.Edad).DataField("edad").DataType(GridColumnDataType.Number);
+                
+                c.AddFor(m=>m.Ingreso).DataField("ingreso").Format("Q ###,###,##0.00").DataType(GridColumnDataType.Number);
+        
+            })
+            .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+                .Popup(p => p
+                        .Title("Ingresos familiares")
+                        .ShowTitle(true)
+                        .Width(800)
+                        .Height(400)
+                    )
+            )
+            .ShowBorders(true)
+            .Summary(s => s.TotalItems(items => {
+
+                items.AddFor(m => m.Ingreso)
+                    .SummaryType(SummaryType.Sum)
+                    .ValueFormat("Q ###,###,##0.00");
+                    
+                })
+            )
+        )
+
+		 <div class="mt-8 text-xl text-azulBecas">Gastos Mensuales del núcleo familiar</div>
+		 
+		<div class="mt-8">
+         @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaFinabeceGastoFamiliar>()
+            .DataSource(ds => ds.Mvc()
+                .Controller("ConvocatoriaFinabeceGastoFamiliarApi")
+                .LoadAction("Get")
+                .InsertAction("Insert")
+                .UpdateAction("Update")
+                .UpdateMethod("POST")
+                .DeleteAction("Delete")
+                .DeleteMethod("POST")
+                .Key("idconvocatoriaFinabeceGastoFamiliar")
+                .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()), IdParticipante = new JS(GetIdParticipante()) })
+                
+            )
+            .RemoteOperations(true)
+            .Columns(c => {
+                
+                c.AddFor(m => m.IdtipoGastoFamilia)
+                     .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("TipoGastoFamiliaFinabeceApi").LoadAction("Get").Key("idtipoGastoFamilia"))
+                        .ValueExpr("idtipoGastoFamilia")
+				        .DisplayExpr("nombre")
+                    ).DataField("idtipoGastoFamilia").Caption("Gasto familiar");
+                c.AddFor(m=>m.Gasto).DataField("gasto").Format("Q ###,###,##0.00").DataType(GridColumnDataType.Number);
+        
+            })
+            .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowAdding(false)
+                .AllowUpdating(true)
+                .AllowDeleting(false)
+                .Popup(p => p
+                        .Title("Ingresos familiares")
+                        .ShowTitle(true)
+                        .Width(800)
+                        .Height(400)
+                    )
+                .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(4)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        
+                        groupItems.AddSimpleFor(m => m.Gasto).ColSpan(4).DataField("gasto");
+                        
+                        
+                    });
+                }))
+            )
+            .ShowBorders(true)
+            .Summary(s => s.TotalItems(items => {
+
+                items.AddFor(m => m.Gasto)
+                    .SummaryType(SummaryType.Sum)
+                    .ValueFormat("Q ###,###,##0.00");
+                    
+                })
+            )
+        )
+        </div>
+        @*<div class="text-center text-red-400">@ViewBag.MensajeError</div>
+        <div class="mx-auto mt-8 flex w-3/4">
+				
+				<div class="mx-auto w-1/2">
+						@(Html.DevExtreme().Button()
+							.Icon("spinprev")
+							.Text("Anterior")
+							.Type(ButtonType.Back)
+							.OnClick(@<text>
+                            function(e){ location.href = "@Url.Action("Index", "FormularioFinabeceCentroEstudio", new{ id = @ViewBag.IdParticipante, idconv = @ViewBag.IdConvocatoria })"; }
+                            </text>)
+						 )
+
+						 
+					</div>
+				<div class="mx-auto w-1/2">
+					@(Html.DevExtreme().Button()
+							.Icon("spinnext")
+							.Text("Siguiente")
+							.Type(ButtonType.Default)
+                            .OnClick(@<text>
+                            function(e){ location.href = "@Url.Action("Editar", "FormularioFinabeceIngresosGastos", new{ id = @ViewBag.IdParticipante, idconv = @ViewBag.IdConvocatoria })"; }
+                            </text>)
+				            			
+				)
+				</div>
+						
+		</div>	*@
+		 
+	</div>
+
+</div>
+
+
+@functions {
+    string GetIdConvocatoria()
+    {
+        string result = "";
+
+        result = ViewBag.IdConvocatoria;
+
+        return result;
+    }
+
+    string GetIdParticipante()
+    {
+        string result = "";
+
+        result = ViewBag.IdParticipante;
+
+        return result;
+    }
+}
+
+<script>
+
+  function GetIdConvocatoria() {                        
+
+
+        if ('@ViewBag.IdConvocatoria' != '') {
+            var ConvId = '@ViewBag.IdConvocatoria';
+                
+                return ConvId.toString();
+            } else
+            {
+                return -1;
+            }
+        }
+
+    function GetIdParticipante() {                        
+
+
+        if ('@ViewBag.IdParticipante' != '') {
+            var ConvId = '@ViewBag.IdParticipante';                
+                
+                return ConvId.toString();
+            } else
+            {
+                return -1;
+            }
+     }
+
+</script>

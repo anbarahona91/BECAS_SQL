@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BECAS_SEGEPLAN_ADMIN", "BECAS_SEGEPLAN_ADMIN.csproj", "{C5294C8C-4853-4356-89CE-A8A8FF85AE26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BECAS_SEGEPLAN_DATA", "..\BECAS_SEGEPLAN_DATA\BECAS_SEGEPLAN_DATA.csproj", "{AD985B0A-ACEA-4679-AE75-67194F346C78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5294C8C-4853-4356-89CE-A8A8FF85AE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5294C8C-4853-4356-89CE-A8A8FF85AE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5294C8C-4853-4356-89CE-A8A8FF85AE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5294C8C-4853-4356-89CE-A8A8FF85AE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD985B0A-ACEA-4679-AE75-67194F346C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD985B0A-ACEA-4679-AE75-67194F346C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD985B0A-ACEA-4679-AE75-67194F346C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD985B0A-ACEA-4679-AE75-67194F346C78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {215230BC-5D38-47FD-A9B9-ABA8D17976B1}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,154 @@
+﻿@using DevExtreme.AspNet.Mvc
+@using Microsoft.AspNetCore.Http
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    @*<script src="https://cdn.tailwindcss.com"></script>*@
+    <link href="~/css/devextreme/dx.common.css" rel="stylesheet" />
+    <link href="~/css/devextreme/dx.material.custom-becas-segeplan-aqua.css" rel="stylesheet" />
+    <script src="~/js/devextreme/jquery.js"></script>
+    <script src="~/js/devextreme/dx.all.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.data.js"></script>
+
+
+<script>
+    //tailwind.config = {
+    //  theme: {
+    //    extend: {
+    //        colors: {
+    //            transparent: 'transparent',
+    //            current: 'currentColor',
+    //            clifford: '#000000',
+               
+    //            azulBecas: 'rgb(31 66 136/1)',
+                
+    //            aquaBecas: 'rgb(50 193 177/1)',
+                
+    //            naranjaBecas: 'rgb(254 177 90/1)',
+               
+    //            naranja2Becas: 'rgb(255 237 213/1)',
+    //            moradoBecas: 'rgb(94 93 156/1)',
+                
+    //            celesteBecas: 'rgb(59 200 234/1)',
+    //            azul2Becas: '#4b72a9',
+    //            morado2Becas: '#967cb5',
+               
+    //            aqua2Becas: 'rgb(93 184 127/1)',
+    //            azul3Becas: '#134289',
+    //            lilaBecas: '#a24c71'
+    //        },
+    //        backgroundImage: {
+    //            'logo-pattern': "url('/images_site/Logo_pattern.jpg')",
+    //            'logo-pattern-opacity': "url('/images_site/logo_pattern_opacity.png')",
+                
+    //        }
+    //    }
+    //}
+    //}
+  </script>
+
+</head>
+<body class="container bg-white mx-auto">
+    <header class="bg-white  mx-auto ">
+        <div class="flex justify-between items-center h-20 shadow px-2">
+            <div class="h-full px-4">
+                <a href="#">
+                    <img src="/images_site/LogoSegeplan.jpg" class="h-full object-contain"/>
+                </a>
+            </div>
+            <div>
+                <div>
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+            <div class="h-full px-4">
+                <a href="#" >
+                    <img src="/images_site/LogoBecas.png" class="h-full object-contain"/>
+                </a>
+            </div>
+        </div>
+        @*Este es el menú de navegación para móviles*@
+        @*<div class="topnav md:hidden bg-moradoBecas ">
+          <a href="javascript:void(0);" class="text-white hover:bg-moradoBecas" onclick="myFunction()">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- Navigation links (hidden by default) -->
+          <div id="myLinks"  >
+            <a href="/Home" class="hover:no-underline text-white bg-morado2Becas hover:bg-moradoBecas" data-aos="flip-left">Inicio</a>
+            <a href="/BuscadorBecas" class="hover:no-underline text-white bg-morado2Becas hover:bg-moradoBecas">Convocatoria de becas</a>
+            <a href="/Informacion" class="hover:no-underline text-white bg-morado2Becas hover:bg-moradoBecas">Información</a>
+            <a href="/ListadoEventos" class="hover:no-underline text-white bg-morado2Becas hover:bg-moradoBecas">Eventos</a>
+            <a href="/Logros" class="hover:no-underline text-white bg-morado2Becas hover:bg-moradoBecas">Logros</a>
+            <a href="/Contacto" class="hover:no-underline text-white bg-morado2Becas hover:bg-moradoBecas">Contacto</a>
+            
+          </div>
+        </div>*@
+        <div class=" mx-auto bg-logo-pattern-opacity">
+            <div class="max-w-4xl mx-auto justify-between items-center hidden md:flex font-semibold h-24 grid grid-cols-6">
+               
+        </div>
+        </div>
+        
+    </header>
+    <div class="">
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="min-h-full mx-auto bg-azulBecas text-white p-8 " >
+        <div class="Block justify-between items-center h-full md:h-36 max-w-6xl mx-auto md:flex text-center" >
+            <div class=" w-full md:w-4/12 mt-8 md:mt-0">
+                <div class="font-bold mx-auto w-full">INFORMACIÓN DE CONTACTO</div>
+                <p class="mx-auto w-full">becas@segeplan.gob.gt</p>
+                <p class="mx-auto w-full">Becas Nacionales </p>
+                <p class="mx-auto w-full">+(502) 2504-4444 Ext. 4318 </p>
+                <p class="mx-auto w-full">Becas Internacionales </p>
+                <p class="mx-auto w-full">+(502) 2504-4444 Ext. 4319 </p>
+                <p class="mx-auto w-full">9a. calle 10-44 Zona 1, Ciudad de Guatemala</p>
+                
+            </div>
+            <div class=" w-full md:w-4/12 mt-8 md:mt-0">
+                
+            </div>
+            <div class="h-5/6 w-full md:w-4/12 mt-8 md:mt-0">
+                <div class="h-28 md:h-3/6  items-center p-1">
+                    <img src="/images_site/LogoBecasBlanco.png" class="h-full mx-auto object-contain"/>
+                </div>
+                <div class="h-24 md:h-3/6 p-2">
+                    <img src="/images_site/LogoSegeplanBlanco.png" class="h-full mx-auto object-contain"/>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myLinks");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+    </script>
+
+     <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

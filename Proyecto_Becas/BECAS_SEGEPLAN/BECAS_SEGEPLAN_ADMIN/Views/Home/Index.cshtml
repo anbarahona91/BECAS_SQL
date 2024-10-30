@@ -1,0 +1,52 @@
+﻿@using DevExtreme.AspNet.Mvc
+@model BECAS_SEGEPLAN_ADMIN.Models.LoginUser;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    Layout = "_loginLayout";
+}
+
+<div class="text-center">
+    
+    <div class="w-3/4 mx-auto shadow min-h-dvh rounded m-8">
+		@using (Html.BeginForm("Index","Principal","POST"))
+		{
+			@Html.AntiForgeryToken()
+        <div class="w-1/2 mx-auto p-8">
+            <div class="m-8">
+                @(Html.DevExtreme().TextBoxFor(m=> Model.Usuario)
+									.ID("Usuario")
+									.InputAttr("aria-label", "Usuario")
+									.ShowClearButton(true)
+									.Label("Usuario")
+									.LabelMode(EditorLabelMode.Floating)
+									.StylingMode(EditorStylingMode.Underlined)
+						  )
+            </div>
+            <div class="m-8">
+                @(Html.DevExtreme().TextBoxFor(m=> Model.Password)
+									.ID("Pass")
+									.InputAttr("aria-label", "Pass")
+									.ShowClearButton(true)
+									.Label("Contraseña")
+									.LabelMode(EditorLabelMode.Floating)
+									.StylingMode(EditorStylingMode.Underlined)
+									.Mode(TextBoxMode.Password)
+						  )
+            </div>
+			<div class="m-8">
+				@(Html.DevExtreme().Button()
+							.Icon("card")
+							.Text("Ingresar")
+							.Type(ButtonType.Default)
+							.UseSubmitBehavior(true)
+						 )
+			</div>
+        </div>
+		}
+    </div>
+
+</div>

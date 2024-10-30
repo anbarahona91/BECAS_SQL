@@ -1,0 +1,255 @@
+﻿@{
+    if (ViewData["DevExtremeLoaded"] == null)
+    {
+		@using DevExtreme.AspNet.Mvc;
+        ViewData["DevExtremeLoaded"] = true;
+    }
+}
+
+@{
+	Layout = "_LayoutPopUp";
+}
+
+
+<style>
+    #dropzone-external {
+	width: 350px;
+	height: 350px;
+	background-color: rgb(183 183 183 / 10%);
+	border-width: 2px;
+	border-style: dashed;
+	padding: 10px;
+	border-color: var(--dx-color-border);
+}
+#dropzone-external > * {
+	pointer-events: none;
+}
+#dropzone-external.dropzone-active {
+	border-style: solid;
+	border-color: var(--dx-color-primary);
+}
+.widget-container > span {
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom: 16px;
+}
+#dropzone-image {
+	max-width: 100%;
+	max-height: 100%;
+}
+#dropzone-text > span {
+	font-weight: 100;
+	opacity: 0.5;
+}
+#upload-progress {
+	display: flex;
+	margin-top: 10px;
+}
+.flex-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+<script>
+    function getProgressBarInstance() {
+        return $("#upload-progress").dxProgressBar("instance");
+    }
+
+    function fileUploader_dropZoneEnter({ component, dropZoneElement, event }) {
+        if(dropZoneElement.id === "dropzone-external") {
+            const items = event.originalEvent.dataTransfer.items;
+
+            const allowedFileExtensions = component.option('allowedFileExtensions');
+            const draggedFileExtension = `.${items[0].type.replace(/^image\//, '')}`;
+
+            const isSingleFileDragged = items.length === 1;
+            const isValidFileExtension = allowedFileExtensions.includes(draggedFileExtension);
+
+            if (isSingleFileDragged && isValidFileExtension) {
+                toggleDropZoneActive(dropZoneElement, true);
+            }
+        }
+    }
+
+    function fileUploader_dropZoneLeave(e) {
+        if(e.dropZoneElement.id === "dropzone-external")
+            toggleDropZoneActive(e.dropZoneElement, false);
+    }
+
+    function fileUploader_uploaded(e) {
+        const file = e.file;
+        const fileReader = new FileReader();
+        fileReader.onload = function() {
+            toggleDropZoneActive($("#dropzone-external")[0], false);
+            $("#dropzone-image")[0].src = fileReader.result;
+        }
+        fileReader.readAsDataURL(file);
+        $("#dropzone-text")[0].style.display = "none";
+        getProgressBarInstance().option({
+            visible: false,
+            value: 0
+        });
+    }
+
+    function fileUploader_progress(e) {
+        getProgressBarInstance().option("value", e.bytesLoaded / e.bytesTotal * 100);
+    }
+
+    function fileUploader_uploadStarted() {
+        toggleImageVisible(false);
+        getProgressBarInstance().option("visible", true);
+    }
+
+    function toggleDropZoneActive(dropZone, isActive) {
+        dropZone.classList.toggle('dropzone-active', isActive);
+    }
+
+    function toggleImageVisible(visible) {
+        $("#dropzone-image")[0].hidden = !visible;
+    }
+
+    function getFileUploaderInstance() {
+        return $("#file-uploader_documentos").dxFileUploader("instance");
+    }
+
+    function reloadGridData() {
+        $("#GridDocumentos").dxDataGrid("getDataSource").reload();
+    }
+
+    function onFichaIconClick(e) {
+        
+        window.open("/DocumentosFinabece/" + e.row.data.documento, "_blank");
+    }
+
+    function CargarFotoGuardada(foto) {
+        
+        $("#dropzone-image")[0].src = "/DocumentosFinabece/" + foto;
+    }
+
+</script>
+
+<div class="grid-cols-2 m-4 mx-auto grid w-3/4">
+
+    <div class="widget-container flex-box">
+            <span>Fotografía del postulante</span>
+            <div id="dropzone-external" class="flex-box">
+                <img id="dropzone-image" src="#" hidden alt="" onload="toggleImageVisible(true)" />
+                    <div id="dropzone-text" class="flex-box">
+                    
+            
+                    </div>
+                @(Html.DevExtreme().ProgressBar()
+                    .ID("upload-progress")
+                    .Min(0)
+                    .Max(100)
+                    .Width("30%")
+                    .ShowStatus(false)
+                    .Visible(false)
+                )
+            </div>
+    </div>
+    <div class="mx-auto mt-8 w-3/4">
+            @(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.ConvocatoriaFinabeceDocumento>()
+                .ID("GridDocumentos")
+                .DataSource(ds => ds.Mvc()
+                    .Controller("ConvocatoriaFinabeceDocumentoApi")
+                    .LoadAction("Get")
+                    .DeleteAction("Delete")
+                    .DeleteMethod("POST")
+                    .Key("idconvocatoriaFinabeceDocumento")
+                    .LoadParams(new { IdConvocatoria = new JS(GetIdConvocatoria()), IdParticipante = new JS(GetIdParticipante()) })
+                )
+                .RemoteOperations(true)
+                .Columns(columns => {
+                    @*columns.Add()
+                        .Type(GridCommandColumnType.Buttons)
+                        .Width(110)
+                        .Buttons(b => {
+                            
+                            b.Add().Name(GridColumnButtonName.Delete).Text("Eliminar");
+                        });*@
+                    columns.AddFor(m=>m.Nombre).DataField("nombre").Caption("Listado de documentos adjuntos");
+                    columns.AddFor(m=>m.Documento).DataField("documento").Width(0);
+                   
+                        columns.Add()
+                        .Type(GridCommandColumnType.Buttons)
+                        .Width("25%")
+                        .Name("BtPID")
+                        .Buttons(b =>
+                        {
+                
+                            b.Add().Hint("Ver").Icon("pdffile").OnClick("onFichaIconClick");
+                            
+                        }).Width(75);
+                })
+                .Editing(e => e.Mode(GridEditMode.Form)
+                    .AllowAdding(false)
+                    .AllowUpdating(false)
+                    .AllowDeleting(true)
+                
+                )
+            
+                .ShowBorders(true)
+                .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+            
+            )
+     </div>
+</div>
+
+
+@functions {
+    string GetIdConvocatoria()
+    {
+        string result = "";
+
+        result = ViewBag.IdConvocatoria;
+
+        return result;
+    }
+
+    string GetIdParticipante()
+    {
+        string result = "";
+
+        result = ViewBag.IdParticipante;
+
+        return result;
+    }
+}
+
+<script>
+
+  function GetIdConvocatoria() {                        
+
+
+        if ('@ViewBag.IdConvocatoria' != '') {
+            var ConvId = '@ViewBag.IdConvocatoria';                
+                return ConvId.toString();
+                
+            } else
+            {
+                return -1;
+            }
+   }
+
+   function GetIdParticipante() {                        
+
+
+        if ('@ViewBag.IdParticipante' != '') {
+            var ConvId = '@ViewBag.IdParticipante';                
+                return ConvId.toString();
+            } else
+            {
+                return -1;
+            }
+   }
+
+</script>
+
+<script>
+    
+  CargarFotoGuardada("@ViewBag.PathFoto");
+    
+</script>

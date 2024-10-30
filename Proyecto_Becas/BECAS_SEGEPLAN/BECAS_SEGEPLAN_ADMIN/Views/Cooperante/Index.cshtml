@@ -1,0 +1,65 @@
+﻿@using DevExtreme.AspNet.Mvc
+
+@{
+    Layout = "_Layout";
+}
+
+@(Html.DevExtreme().DataGrid<BECAS_SEGEPLAN_DATA.Models.Cooperante>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("CooperatenApi")
+        .LoadAction("Get")
+        .InsertAction("Insert")
+        .UpdateAction("Update")
+        .UpdateMethod("POST")
+        .DeleteAction("Delete")
+        .DeleteMethod("POST")
+        .Key("idcooperante")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m=>m.Nombre).DataField("nombre");
+
+        columns.AddFor(m=>m.Descripcion).DataField("descripcion").Visible(false);
+
+        
+        columns.AddFor(m => m.Idpais)
+             .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("PaisApi").LoadAction("Get").Key("idpais"))
+                .ValueExpr("idpais")
+				.DisplayExpr("nombre")
+            ).DataField("idpais").Caption("País");
+
+        columns.AddFor(m => m.Logo).DataField("logo").Visible(false);
+
+        columns.AddFor(m => m.Sitioweb).DataField("sitioweb").Visible(false);
+
+        columns.AddFor(m => m.Contacto).DataField("contacto").AllowFiltering(false);
+    })
+    .Editing(e => e.Mode(GridEditMode.Popup)
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+        .Popup(p => p
+                .Title("Cooperante")
+                .ShowTitle(true)
+                .Width(1000)
+                .Height(700)
+            )
+    )
+    .FilterRow(filterRow => filterRow
+        .Visible(true)
+        .ApplyFilter(GridApplyFilterMode.Auto)
+    )
+    .ShowBorders(true)
+    .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager => {
+        pager.Visible(true);
+        pager.DisplayMode(GridPagerDisplayMode.Full);
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new JS("[5, 10, 'todos']"));
+        pager.ShowInfo(true);
+        pager.ShowNavigationButtons(true);
+    })
+)

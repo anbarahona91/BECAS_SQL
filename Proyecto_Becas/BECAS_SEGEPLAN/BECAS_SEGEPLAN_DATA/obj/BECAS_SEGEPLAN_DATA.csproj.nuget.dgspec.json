@@ -1,0 +1,86 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\abner.lopez\\Documents\\Proyectos\\Becas\\BECAS_SEGEPLAN\\BECAS_SEGEPLAN_DATA\\BECAS_SEGEPLAN_DATA.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\abner.lopez\\Documents\\Proyectos\\Becas\\BECAS_SEGEPLAN\\BECAS_SEGEPLAN_DATA\\BECAS_SEGEPLAN_DATA.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\abner.lopez\\Documents\\Proyectos\\Becas\\BECAS_SEGEPLAN\\BECAS_SEGEPLAN_DATA\\BECAS_SEGEPLAN_DATA.csproj",
+        "projectName": "BECAS_SEGEPLAN_DATA",
+        "projectPath": "C:\\Users\\abner.lopez\\Documents\\Proyectos\\Becas\\BECAS_SEGEPLAN\\BECAS_SEGEPLAN_DATA\\BECAS_SEGEPLAN_DATA.csproj",
+        "packagesPath": "C:\\Users\\abner.lopez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abner.lopez\\Documents\\Proyectos\\Becas\\BECAS_SEGEPLAN\\BECAS_SEGEPLAN_DATA\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\abner.lopez\\Documents\\Proyectos\\Becas\\BECAS_SEGEPLAN\\BECAS_SEGEPLAN\\NuGet.Config",
+          "C:\\Users\\abner.lopez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 21.2\\DevExtreme\\System\\DevExtreme\\Bin\\AspNetCore": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
+            "Oracle.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.21.150, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

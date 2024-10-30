@@ -1,0 +1,232 @@
+﻿@model BECAS_SEGEPLAN_DATA.Models.Participante
+@{
+    if (ViewData["DevExtremeLoaded"] == null)
+    {
+		@using DevExtreme.AspNet.Mvc;
+        ViewData["DevExtremeLoaded"] = true;
+    }
+}
+
+@{
+	Layout = "_LayoutPopUp";
+}
+
+
+<script>
+	function onValueChanged(e) { 
+        var Municipio = $("#Municipio").dxSelectBox("instance");
+        populateDependentSelectBox(Municipio, e.value);  
+		
+	} 
+
+	function populateDependentSelectBox(sb, parent) {  
+        var ds = DevExpress.data.AspNet.createStore({  
+            "loadParams": { "iddepartamento": parent },  
+            "loadUrl": "/MunicipioApi/GetD"  
+        });  
+        sb.option('dataSource', ds);  
+          
+    }
+	
+	function recargardataselectDepartamento() {
+        $("#Departamento").dxSelectBox("instance").getDataSource().reload().done(() => {
+            $("#Departamento").dxSelectBox("instance").option('value', null);
+            $("#Departamento").dxSelectBox("instance").option("value", @Model.Iddepartamento);
+        }
+        );
+        recargardataselectMunicipio();
+	}
+
+	function recargardataselectMunicipio() {
+        $("#Municipio").dxSelectBox("instance").getDataSource().reload().done(() => {
+            $("#Municipio").dxSelectBox("instance").option('value', null);
+            $("#Municipio").dxSelectBox("instance").option("value", @Model.Idmunicipio);
+        }
+        );
+        recargardataselectEtnia();
+	}
+
+	function recargardataselectEtnia() {
+        $("#Etnia").dxSelectBox("instance").getDataSource().reload().done(() => {
+            $("#Etnia").dxSelectBox("instance").option('value', null);
+            $("#Etnia").dxSelectBox("instance").option("value", @Model.Idetnia);
+        }
+        );
+        recargardataselectComunidadLinguistica();
+	}
+
+	function recargardataselectComunidadLinguistica() {
+        $("#ComunidadLinguistica").dxSelectBox("instance").getDataSource().reload().done(() => {
+            $("#ComunidadLinguistica").dxSelectBox("instance").option('value', null);
+            $("#ComunidadLinguistica").dxSelectBox("instance").option("value", @Model.IdcomunidadLinguistica);
+        }
+        );
+        recargardataselectDiscapacidad();
+	}
+
+	function recargardataselectDiscapacidad() {
+        $("#Discapacidad").dxSelectBox("instance").getDataSource().reload().done(() => {
+            $("#Discapacidad").dxSelectBox("instance").option('value', null);
+            $("#Discapacidad").dxSelectBox("instance").option("value", @Model.Idtipodiscapacidad);
+        }
+        );
+	}
+</script>
+@using (Html.BeginForm("Edit","ParticipanteEdicion"))
+{
+			@Html.AntiForgeryToken()
+			
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+			<div class="grid-cols-1 inline-grid w-full gap-y-8 p-8">	
+					<div>
+						@(Html.DevExtreme().TextBoxFor(m => m.CuiDpi)
+									.InputAttr("aria-label", "DPI")
+									.ShowClearButton(true)
+									.Label("Número DPI/CUI")
+									.LabelMode(EditorLabelMode.Floating)
+									.StylingMode(EditorStylingMode.Underlined)
+						  )
+					</div>
+					<div>
+					@(Html.DevExtreme().TextBoxFor(m => m.CorreoElectronico)
+									.InputAttr("aria-label", "Correo")
+									.ShowClearButton(true)
+									.Label("Correo electrónico")
+									.LabelMode(EditorLabelMode.Floating)
+									.StylingMode(EditorStylingMode.Underlined)
+							  )
+					</div>
+					<div>
+						@(Html.DevExtreme().TextBoxFor(m => m.Nombre)
+									.InputAttr("aria-label", "Nombre")
+									.ShowClearButton(true)
+									.Label("Nombres")
+									.LabelMode(EditorLabelMode.Floating)
+									.StylingMode(EditorStylingMode.Underlined)
+						  )
+					</div>
+					<div>
+						@(Html.DevExtreme().TextBoxFor(m => m.Apellidos)
+									.InputAttr("aria-label", "Apellido")
+									.ShowClearButton(true)
+									.Label("Apellidos")
+									.LabelMode(EditorLabelMode.Floating)
+									.StylingMode(EditorStylingMode.Underlined)
+						  )
+					</div>
+					<div >
+						@(Html.DevExtreme().SelectBoxFor(m => m.Sexo)
+							.ID("Sexo")
+							.DataSource(d => d.Mvc().Controller("SexoParticipanteApi").LoadAction("Get").Key("id"))
+							.ValueExpr("id")
+							.DisplayExpr("nombre")
+							.Placeholder("Seleccionar...")
+							.Label("Sexo")
+							.LabelMode(EditorLabelMode.Floating)
+							.StylingMode(EditorStylingMode.Underlined)
+							.ShowClearButton(true)
+						)
+					</div>
+					<div>
+						@(Html.DevExtreme().DateBoxFor(m=>m.Fechanacimiento)
+							.InputAttr("aria-label", "Fechanacimiento")
+							.Label("Fecha de nacimiento")
+							.LabelMode(EditorLabelMode.Floating)
+							.StylingMode(EditorStylingMode.Underlined)
+							.Max(DateTime.Now)
+							.Min(new DateTime(1950, 1, 1))
+										@*.OnValueChanged("dateBox_valueChanged")*@
+						)
+					</div>
+					<div>
+					@(Html.DevExtreme().SelectBoxFor(m=> m.Iddepartamento)
+						.ID("Departamento")
+						.DataSource(d => d.Mvc().Controller("DepartamentoApi").LoadAction("Get").Key("iddepartamento"))
+						.ValueExpr("iddepartamento")
+						.DisplayExpr("nombre")
+						.Placeholder("Seleccionar...")
+						.Label("Departamento donde nació")
+						.LabelMode(EditorLabelMode.Floating)
+						.OnValueChanged("onValueChanged")
+						.SearchEnabled(true)
+						.StylingMode(EditorStylingMode.Underlined)
+						.DeferRendering(false)
+					)
+				</div>
+				<div>
+					@(Html.DevExtreme().SelectBoxFor(m=> m.Idmunicipio)
+						.ID("Municipio")
+						.DataSource(d => d.Mvc().Controller("MunicipioApi").LoadAction("Get").Key("idmunicipio"))
+						.ValueExpr("idmunicipio")
+						.DisplayExpr("nombre")
+						.Placeholder("Seleccionar...")
+						.Label("Municipio donde nació")
+						.LabelMode(EditorLabelMode.Floating)
+						.SearchEnabled(true)
+						.StylingMode(EditorStylingMode.Underlined)
+					)
+					
+						
+				</div>
+				<div>
+					@(Html.DevExtreme().SelectBoxFor(m=> m.Idetnia)
+						.ID("Etnia")
+						.DataSource(d => d.Mvc().Controller("EtniaApi").LoadAction("Get").Key("idetnia"))
+						.ValueExpr("idetnia")
+						.DisplayExpr("nombre")
+						.Placeholder("Seleccionar...")
+						.Label("Autoidentificación étcnica")
+						.LabelMode(EditorLabelMode.Floating)
+						.SearchEnabled(true)
+						.StylingMode(EditorStylingMode.Underlined)
+					)
+				</div>
+				<div >
+					@(Html.DevExtreme().SelectBoxFor(m=> m.IdcomunidadLinguistica)
+						.ID("ComunidadLinguistica")
+						.DataSource(d => d.Mvc().Controller("ComunidadLinguisticaApi").LoadAction("Get").Key("idcomunidadLinguistica"))
+						.ValueExpr("idcomunidadLinguistica")
+						.DisplayExpr("nombre")
+						.Placeholder("Seleccionar...")
+						.Label("Comunidad lingüistica")
+						.LabelMode(EditorLabelMode.Floating)
+						.StylingMode(EditorStylingMode.Underlined)
+					)
+				</div>
+				<div>
+					@(Html.DevExtreme().SelectBoxFor(m=> m.Idtipodiscapacidad)
+						.ID("Discapacidad")
+						.DataSource(d => d.Mvc().Controller("DiscapacidadApi").LoadAction("Get").Key("iddiscapacidad"))
+						.ValueExpr("iddiscapacidad")
+						.DisplayExpr("nombre")
+						.Placeholder("Seleccionar...")
+						.Label("Tipo de discapacidad")
+						.LabelMode(EditorLabelMode.Floating)
+						.SearchEnabled(true)
+						.StylingMode(EditorStylingMode.Underlined)
+					)
+				</div>
+					
+			</div>
+
+			@*<div class="mx-auto w-1/4">
+						@(Html.DevExtreme().Button()
+							.Icon("spinnext")
+							.Text("Guardar")
+							.Type(ButtonType.Default)
+							.UseSubmitBehavior(true)
+						 )
+			</div>*@
+
+}
+@(Html.DevExtreme().Button()
+							.Icon("spinprev")
+							.Text("Anterior")
+							.Type(ButtonType.Back)
+							.OnClick(@<text>
+										recargardataselectDepartamento()
+																		
+	</text>)
+							.Visible(false)
+						 )

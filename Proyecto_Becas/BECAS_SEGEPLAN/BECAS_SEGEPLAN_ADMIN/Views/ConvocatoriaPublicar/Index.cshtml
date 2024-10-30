@@ -1,0 +1,97 @@
+﻿@using DevExtreme.AspNet.Mvc
+
+
+
+<div class="text-center w-full text-azulBecas m-8 font-bold text-2xl">
+    @ViewBag.TituloConvocatoria
+</div>
+
+<div class="w-1/4 mx-auto ">
+    @if(ViewBag.Publica)
+    {
+        @(Html.DevExtreme().Button()
+                .Icon("arrowdown")
+                .Text("Ocultar")
+                .Width("100%")
+                .Type(ButtonType.Danger)
+                .OnClick(@<text>
+                    function(e){ location.href = "@Url.Action("Ocultar", "ConvocatoriaPublicar", new{ id = @ViewBag.Id})"; }
+                    </text>)
+        )    
+    }
+    else
+    {
+        @(Html.DevExtreme().Button()
+                .Icon("upload")
+                .Text("Publicar")
+                .Width("100%")
+                .Type(ButtonType.Success)
+                .OnClick(@<text>
+                    function(e){ location.href = "@Url.Action("Publicar", "ConvocatoriaPublicar", new{ id = @ViewBag.Id})"; }
+                    </text>)
+        )    
+    }
+</div>
+
+
+<div class="w-3/4 shadow rounded mx-auto mt-8 text-azulBecas">
+
+    <div class="p4 h-12">
+        <div class="text-center w-full text-2xl">
+            Requisitos para publicar la convocatoria
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 m-8">
+        <div class="p-8">
+            <div>
+                País donde se desarrollará el programa
+            </div>
+            <div>
+                @(Html.DevExtreme().Switch()
+                            .Value(ViewBag.Pais)
+                        )
+            </div>
+        </div>
+
+        <div class="p-8">
+            <div>
+                Nivel académico del programa
+            </div>
+            <div>
+                @(Html.DevExtreme().Switch()
+                            .Value(ViewBag.Nivel)
+                    
+                        )
+            </div>
+        </div>
+
+        <div class="p-8">
+            <div>
+                Idioma requerido para aplicar al programa
+            </div>
+            <div>
+                @(Html.DevExtreme().Switch()
+                            .Value(ViewBag.Idioma)
+                        )
+            </div>
+        </div>
+
+        <div class="p-8">
+            <div>
+                Oferta académica
+            </div>
+            <div>
+                @(Html.DevExtreme().Switch()
+                            .Value(ViewBag.Oferta)
+                        )
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+

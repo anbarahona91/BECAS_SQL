@@ -1,0 +1,128 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BECAS_SEGEPLAN_ADMIN
+build_property.RootNamespace = BECAS_SEGEPLAN_ADMIN
+build_property.ProjectDir = C:\Users\Usuario\source\repos\BECAS_SEGEPLAN\BECAS_SEGEPLAN_ADMIN\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Usuario\source\repos\BECAS_SEGEPLAN\BECAS_SEGEPLAN_ADMIN
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/AreaEstudio/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJlYUVzdHVkaW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Beneficio/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmVuZWZpY2lvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ClasificacionEspecialidad/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc2lmaWNhY2lvbkVzcGVjaWFsaWRhZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ConvocatoriaDetalle/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udm9jYXRvcmlhRGV0YWxsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ConvocatoriaFinabeceConsulta/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udm9jYXRvcmlhRmluYWJlY2VDb25zdWx0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ConvocatoriaFinabeceDocumento/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udm9jYXRvcmlhRmluYWJlY2VEb2N1bWVudG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ConvocatoriaFinabeceIngresoGastoConsulta/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udm9jYXRvcmlhRmluYWJlY2VJbmdyZXNvR2FzdG9Db25zdWx0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ConvocatoriaPublicar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udm9jYXRvcmlhUHVibGljYXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Convocatoria/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udm9jYXRvcmlhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Cooperante/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcGVyYW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/IdiomaPrograma/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hUHJvZ3JhbWFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ModalidadPrograma/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kYWxpZGFkUHJvZ3JhbWFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/NivelAcademico/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTml2ZWxBY2FkZW1pY29cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ParticipanteEdicion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGljaXBhbnRlRWRpY2lvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Principal/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbmNpcGFsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/ProgramaAcademico/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbWFBY2FkZW1pY29cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Publico/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGljb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Shared/_LayoutPopUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQb3BVcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/SubAreaEstudio/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViQXJlYUVzdHVkaW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/TipoBeca/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0JlY2FcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-c6zusfl139
+
+[C:/Users/Usuario/source/repos/BECAS_SEGEPLAN/BECAS_SEGEPLAN_ADMIN/Views/Shared/_loginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-orr9y43nqc
